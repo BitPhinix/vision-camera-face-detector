@@ -10,9 +10,9 @@ import AVFoundation
 public class VisionCameraFaceDetector: NSObject, FrameProcessorPluginBase {
     static var FaceDetectorOption: FaceDetectorOptions = {
         let option = FaceDetectorOptions()
-        option.contourMode = .all
+        option.contourMode = .none
         option.classificationMode = .all
-        option.landmarkMode = .all
+        option.landmarkMode = .none
         option.performanceMode = .accurate // doesn't work in fast mode!, why?
         return option
     }()
@@ -113,7 +113,6 @@ public class VisionCameraFaceDetector: NSObject, FrameProcessorPluginBase {
                     map["rightEyeOpenProbability"] = face.rightEyeOpenProbability
                     map["smilingProbability"] = face.smilingProbability
                     map["bounds"] = processBoundingBox(from: face)
-//                    map["contours"] = processContours(from: face)
 
                     faceAttributes.append(map)
                 }
